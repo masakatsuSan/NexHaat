@@ -1,62 +1,34 @@
-import tursoClient from "../config/turso.js";
+import OTP from "../models/OTP.js";
 
-const OTP_EXPIRY_MINUTES = 5; // 5 minutes
+const OTP_EXPIRY_MINUTES = 5;
 
 const generateOTP = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
 const storeOTP = async (phone, otp) => {
-  const expiresAt = new Date(Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000).toISOString();
-
-  // Upsert: insert or update if phone already exists
-  await tursoClient.execute({
-    sql: `INSERT INTO otp_store (phone, otp, expires_at) VALUES (?, ?, ?)
-          ON CONFLICT(phone) DO UPDATE SET otp = ?, expires_at = ?`,
-    args: [phone, otp, expiresAt, otp, expiresAt],
-  });
+  const expiresAt = new Date(Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000);
+  await OTP.findByIdAndUpdate(phone, { otp, expires_at: expiresAt, created_at: new Date() }, { upsert: true, new: true, setDefaultsOnInsert: true });
 };
 
 const verifyOTP = async (phone, otp) => {
-  const result = await tursoClient.execute({
-    sql: "SELECT * FROM otp_store WHERE phone = ?",
-    args: [phone],
-  });
-
-  const record = result.rows[0];
-
+  const record = await OTP.findById(phone);
   if (!record) {
     return { success: false, message: "OTP not found. Please request a new one." };
   }
-
-  // Check if OTP is expired
   if (new Date(record.expires_at) < new Date()) {
-    await tursoClient.execute({
-      sql: "DELETE FROM otp_store WHERE phone = ?",
-      args: [phone],
-    });
+    await OTP.findByIdAndDelete(phone);
     return { success: false, message: "OTP expired. Please request a new one." };
   }
-
   if (record.otp !== otp) {
     return { success: false, message: "Invalid OTP" };
   }
-
-  // Delete OTP after successful verification
-  await tursoClient.execute({
-    sql: "DELETE FROM otp_store WHERE phone = ?",
-    args: [phone],
-  });
-
+  await OTP.findByIdAndDelete(phone);
   return { success: true, message: "OTP verified" };
 };
 
-// Cleanup expired OTPs (can be called periodically)
 const cleanupExpiredOTPs = async () => {
-  await tursoClient.execute({
-    sql: "DELETE FROM otp_store WHERE expires_at < ?",
-    args: [new Date().toISOString()],
-  });
+  await OTP.deleteMany({ expires_at: { $lt: new Date() } });
 };
 
 export { generateOTP, storeOTP, verifyOTP, cleanupExpiredOTPs };

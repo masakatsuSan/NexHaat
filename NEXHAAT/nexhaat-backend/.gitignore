@@ -1,5 +1,5 @@
 # ===========================
-# KRISHISETU - .gitignore
+# NEXHAAT - .gitignore
 # ===========================
 
 # -------- Dependencies --------
@@ -10,6 +10,7 @@ node_modules/
 # -------- Environment Variables --------
 # NEVER commit .env files — contains secrets
 .env
+local.db
 
 
 

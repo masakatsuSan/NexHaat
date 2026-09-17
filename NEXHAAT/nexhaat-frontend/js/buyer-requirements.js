@@ -1,0 +1,12 @@
+const base = "http://localhost:5000/api";
+const token = localStorage.getItem("nexhaatToken");
+const user = JSON.parse(localStorage.getItem("nexhaatUser") || "null");
+if (!token || !user) location.href = "login.html";
+const headers = { "Content-Type": "application/json", Authorization: `Bearer ${token}` };
+const request = async (path, options = {}) => { const response = await fetch(base + path, { ...options, headers: { ...headers, ...options.headers } }); const data = await response.json(); if (!response.ok) throw new Error(data.message); return data; };
+const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#039;", '"':"&quot;" })[char]);
+const postSection = document.querySelector("#postSection");
+if (user.role !== "BUYER") postSection.hidden = true;
+const load = async () => { try { const data = await request("/buyer-requirements"); document.querySelector("#requirementList").innerHTML = data.requirements.length ? data.requirements.map((item) => `<article><h3>${escapeHtml(item.crop)} · ${escapeHtml(item.quantity_quintals)} quintals</h3><small>${escapeHtml(item.quality_grade)} · ${escapeHtml(item.location)} · Offer ₹${escapeHtml(item.offered_price_per_quintal)}/quintal</small><small>Buyer: ${escapeHtml(item.buyer_name)}, ${escapeHtml(item.buyer_district)}</small></article>`).join("") : "<p>No open buyer requirements yet.</p>"; } catch (error) { document.querySelector("#requirementList").textContent = error.message; } };
+document.querySelector("#requirementForm").addEventListener("submit", async (event) => { event.preventDefault(); const message = document.querySelector("#formMessage"); try { await request("/buyer-requirements", { method: "POST", body: JSON.stringify(Object.fromEntries(new FormData(event.target))) }); event.target.reset(); message.textContent = "Requirement posted."; load(); } catch (error) { message.textContent = error.message; } });
+load();
