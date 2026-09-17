@@ -1,0 +1,37 @@
+# ===========================
+# KRISHISETU - .gitignore
+# ===========================
+
+# -------- Dependencies --------
+node_modules/
+.pnp
+.pnp.js
+
+# -------- Environment Variables --------
+# NEVER commit .env files — contains secrets
+.env
+
+
+
+
+
+# -------- Testing --------
+coverage/
+.nyc_output/
+*.lcov
+
+# -------- Temporary / Misc --------
+tmp/
+temp/
+.cache/
+*.pid
+*.seed
+*.pid.lock
+
+# -------- Turbo / Monorepo --------
+.turbo/
+
+# -------- Package Managers --------
+.yarn-integrity
+.pnpm-store/
+

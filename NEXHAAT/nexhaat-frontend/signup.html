@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sign Up | KrishiSetu</title>
+
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header class="auth-header">
+
+        <a href="index.html" class="brand">
+
+            <span class="brand-mark">
+                <img src="logo.ico" alt="KrishiSetu logo" />
+            </span>
+
+            <span class="brand-text">
+
+                <strong>
+                    KrishiSetu
+                </strong>
+
+                <small>
+                    Connecting Farmers to Opportunity
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="back-link"
+        >
+            ← Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- =========================
+         SIGN UP
+         ========================= -->
+
+    <main class="auth-main">
+
+        <section class="auth-card">
+
+            <div class="auth-heading">
+
+                <p class="section-label">
+                    JOIN KRISHISETU
+                </p>
+
+                <h1>
+                    Create your
+                    <span>account.</span>
+                </h1>
+
+                <p>
+                    Get access to market information and
+                    opportunities for your produce.
+                </p>
+
+            </div>
+
+
+            <form
+                id="signupForm"
+                novalidate
+            >
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        autocomplete="name"
+                        placeholder="Enter your full name"
+                    >
+
+                    <small
+                        class="field-error"
+                        id="nameError"
+                    ></small>
+
+                </div>
+
+
+                <!-- MOBILE -->
+
+                <div class="form-group">
+
+                    <label for="mobile">
+                        Mobile Number
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="country-code">
+                            +91
+                        </span>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            inputmode="numeric"
+                            maxlength="10"
+                            autocomplete="tel"
+                            placeholder="Enter 10-digit mobile number"
+                        >
+
+                    </div>
+
+                    <small
+                        class="field-error"
+                        id="mobileError"
+                    ></small>
+
+                </div>
+
+
+                <!-- STATE -->
+
+                <div class="form-group">
+
+                    <label for="state">
+                        State / Union Territory
+                    </label>
+
+                    <select
+                        id="state"
+                        name="state"
+                    >
+
+                        <option value="">
+                            Select your state / union territory
+                        </option>
+
+                        <!-- 28 STATES -->
+
+                        <option value="Andhra Pradesh">
+                            Andhra Pradesh
+                        </option>
+
+                        <option value="Arunachal Pradesh">
+                            Arunachal Pradesh
+                        </option>
+
+                        <option value="Assam">
+                            Assam
+                        </option>
+
+                        <option value="Bihar">
+                            Bihar
+                        </option>
+
+                        <option value="Chhattisgarh">
+                            Chhattisgarh
+                        </option>
+
+                        <option value="Goa">
+                            Goa
+                        </option>
+
+                        <option value="Gujarat">
+                            Gujarat
+                        </option>
+
+                        <option value="Haryana">
+                            Haryana
+                        </option>
+
+                        <option value="Himachal Pradesh">
+                            Himachal Pradesh
+                        </option>
+
+                        <option value="Jharkhand">
+                            Jharkhand
+                        </option>
+
+                        <option value="Karnataka">
+                            Karnataka
+                        </option>
+
+                        <option value="Kerala">
+                            Kerala
+                        </option>
+
+                        <option value="Madhya Pradesh">
+                            Madhya Pradesh
+                        </option>
+
+                        <option value="Maharashtra">
+                            Maharashtra
+                        </option>
+
+                        <option value="Manipur">
+                            Manipur
+                        </option>
+
+                        <option value="Meghalaya">
+                            Meghalaya
+                        </option>
+
+                        <option value="Mizoram">
+                            Mizoram
+                        </option>
+
+                        <option value="Nagaland">
+                            Nagaland
+                        </option>
+
+                        <option value="Odisha">
+                            Odisha
+                        </option>
+
+                        <option value="Punjab">
+                            Punjab
+                        </option>
+
+                        <option value="Rajasthan">
+                            Rajasthan
+                        </option>
+
+                        <option value="Sikkim">
+                            Sikkim
+                        </option>
+
+                        <option value="Tamil Nadu">
+                            Tamil Nadu
+                        </option>
+
+                        <option value="Telangana">
+                            Telangana
+                        </option>
+
+                        <option value="Tripura">
+                            Tripura
+                        </option>
+
+                        <option value="Uttar Pradesh">
+                            Uttar Pradesh
+                        </option>
+
+                        <option value="Uttarakhand">
+                            Uttarakhand
+                        </option>
+
+                        <option value="West Bengal">
+                            West Bengal
+                        </option>
+
+
+                        <!-- UNION TERRITORIES -->
+
+                        <option value="Andaman and Nicobar Islands">
+                            Andaman and Nicobar Islands
+                        </option>
+
+                        <option value="Chandigarh">
+                            Chandigarh
+                        </option>
+
+                        <option value="Dadra and Nagar Haveli and Daman and Diu">
+                            Dadra and Nagar Haveli and Daman and Diu
+                        </option>
+
+                        <option value="Delhi">
+                            Delhi
+                        </option>
+
+                        <option value="Jammu and Kashmir">
+                            Jammu and Kashmir
+                        </option>
+
+                        <option value="Ladakh">
+                            Ladakh
+                        </option>
+
+                        <option value="Lakshadweep">
+                            Lakshadweep
+                        </option>
+
+                        <option value="Puducherry">
+                            Puducherry
+                        </option>
+
+                    </select>
+
+                    <small
+                        class="field-error"
+                        id="stateError"
+                    ></small>
+
+                </div>
+
+
+                <!-- DISTRICT -->
+
+                <div class="form-group">
+
+                    <label for="district">
+                        District
+                    </label>
+
+                    <select
+                        id="district"
+                        name="district"
+                        disabled
+                    >
+
+                        <option value="">
+                            Select your state first
+                        </option>
+
+                    </select>
+
+                    <small
+                        class="field-error"
+                        id="districtError"
+                    ></small>
+
+                </div>
+
+
+                <!-- ACCOUNT TYPE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Account Type
+                    </label>
+
+                    <div class="role-options">
+
+                        <label class="role-option">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="farmer"
+                                checked
+                            >
+
+                            <span class="role-option-content">
+
+                                <span class="role-icon">
+                                    🌾
+                                </span>
+
+                                <span>
+
+                                    <strong>
+                                        Farmer
+                                    </strong>
+
+                                    <small>
+                                        Sell & manage produce
+                                    </small>
+
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="role-option">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="buyer"
+                            >
+
+                            <span class="role-option-content">
+
+                                <span class="role-icon">
+                                    🛒
+                                </span>
+
+                                <span>
+
+                                    <strong>
+                                        Buyer
+                                    </strong>
+
+                                    <small>
+                                        Find & buy produce
+                                    </small>
+
+                                </span>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                    <small
+                        class="field-error"
+                        id="roleError"
+                    ></small>
+
+                </div>
+
+
+                <!-- PASSWORD ROW -->
+
+                <div class="form-row">
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                autocomplete="new-password"
+                                placeholder="Create password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="password"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="field-error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                autocomplete="new-password"
+                                placeholder="Confirm password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="confirmPassword"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="field-error"
+                            id="confirmPasswordError"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+
+                    Create Account
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <p
+                    class="form-message"
+                    id="formMessage"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+
+            <!-- LOGIN -->
+
+            <div class="auth-divider">
+
+                <span>
+                    Already registered?
+                </span>
+
+            </div>
+
+
+            <a
+                href="login.html"
+                class="login-button"
+            >
+                Login to Your Account
+            </a>
+
+
+            <p class="terms-text">
+                Please provide accurate information so your
+                account can be connected with relevant services.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer class="auth-footer">
+
+        <span>
+            © 2026 KrishiSetu
+        </span>
+
+        <span>
+            Built for India's agricultural community.
+        </span>
+
+    </footer>
+
+
+    <script src="js/signup.js"></script>
+
+</body>
+
+</html>

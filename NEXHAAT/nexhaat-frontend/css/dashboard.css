@@ -1,0 +1,1539 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --brown: #8b4933;
+    --brown-dark: #713a29;
+    --dark: #1d211b;
+    --text: #30352e;
+    --muted: #6b7068;
+    --white: #ffffff;
+    --border: rgba(40,43,36,.10);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+select {
+    font: inherit;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    z-index: -2;
+
+    background-image:
+        url("../assets/images/dashboard-bg.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center center;
+
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(248,245,237,.48),
+            rgba(248,245,237,.22) 35%,
+            rgba(248,245,237,.28) 65%,
+            rgba(248,245,237,.82)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        0
+        clamp(20px,4vw,60px)
+        70px;
+
+    background: transparent;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+    position: relative;
+
+    z-index: 20;
+
+    min-height: 96px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    flex-shrink: 0;
+}
+
+.brand-mark {
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: #171b16;
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.brand-mark img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.brand-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.brand-text strong {
+    font-family: Georgia, serif;
+
+    font-size: 23px;
+
+    font-weight: 600;
+
+    color: var(--dark);
+}
+
+.brand-text small {
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    color: #666b63;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.main-nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: clamp(18px,2.4vw,32px);
+
+    margin-left: auto;
+}
+
+.main-nav a {
+    position: relative;
+
+    padding: 10px 0;
+
+    color: #353a32;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.main-nav a:hover {
+    color: var(--brown);
+}
+
+.main-nav a.active {
+    color: var(--dark);
+}
+
+.main-nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 23px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: var(--brown);
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.header-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+}
+
+.notification-button,
+.profile-button {
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.75);
+
+    cursor: pointer;
+
+    color: var(--dark);
+}
+
+.notification-button {
+    position: relative;
+
+    font-size: 17px;
+}
+
+.notification-button span {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    top: 9px;
+    right: 10px;
+
+    border-radius: 50%;
+
+    background: var(--brown);
+}
+
+.profile-button {
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   HAMBURGER
+   ========================================================= */
+
+.menu-button {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 9px;
+
+    margin-left: auto;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.85);
+
+    cursor: pointer;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.menu-button span {
+    width: 21px;
+    height: 2px;
+
+    display: block;
+
+    border-radius: 2px;
+
+    background: #252a23;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%,1240px);
+
+    margin:
+        145px auto 0;
+}
+
+.hero-label,
+.section-label {
+    color: var(--brown);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin-top: 12px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(58px,6.3vw,88px);
+
+    font-weight: 400;
+
+    line-height: .98;
+
+    letter-spacing: -3px;
+
+    color: #1c201a;
+}
+
+.hero h1 span {
+    color: var(--brown);
+}
+
+.hero-description {
+    max-width: 630px;
+
+    margin-top: 20px;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(13px,1.2vw,17px);
+
+    line-height: 1.5;
+
+    color: #464b44;
+}
+
+
+/* =========================================================
+   REGION
+   ========================================================= */
+
+.region-panel {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(100%,1240px);
+
+    min-height: 108px;
+
+    margin:
+        42px auto 0;
+
+    padding:
+        18px 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.84);
+
+    border:
+        1px solid
+        rgba(255,255,255,.70);
+
+    box-shadow:
+        0 15px 45px
+        rgba(40,42,35,.09);
+
+    backdrop-filter: blur(7px);
+
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.region-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-width: 0;
+}
+
+.location-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: var(--brown);
+
+    background:
+        rgba(139,73,51,.10);
+}
+
+.region-info > div:last-child {
+    min-width: 0;
+}
+
+.small-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #767b73;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+.region-info strong {
+    display: block;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(18px,2vw,25px);
+
+    font-weight: 400;
+
+    color: var(--dark);
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   REGION CONTROLS
+   ========================================================= */
+
+.region-controls {
+    width: min(100%,420px);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+}
+
+.field label {
+    display: block;
+
+    margin:
+        0 0 7px 4px;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    color: #686e65;
+}
+
+.select-box {
+    position: relative;
+}
+
+.select-box::after {
+    content: "⌄";
+
+    position: absolute;
+
+    top: 50%;
+    right: 12px;
+
+    transform:
+        translateY(-50%);
+
+    pointer-events: none;
+
+    color: #40463e;
+}
+
+.field select {
+    width: 100%;
+
+    height: 44px;
+
+    padding:
+        0 34px 0 14px;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    border:
+        1px solid
+        rgba(40,43,36,.10);
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background:
+        rgba(255,255,255,.72);
+
+    color: #353a33;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+.field select:focus {
+    border-color:
+        rgba(139,73,51,.45);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(139,73,51,.08);
+}
+
+.field select:disabled {
+    opacity: .55;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   COMMON SECTIONS
+   ========================================================= */
+
+.actions,
+.market-preview,
+.listings-section,
+.opportunity-section,
+.support-section {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(100%,1240px);
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.actions {
+    margin-top: 105px;
+}
+
+.actions h2,
+.section-heading h2 {
+    font-family: Georgia, serif;
+
+    font-weight: 400;
+
+    color: #272b23;
+
+    letter-spacing: -1.5px;
+}
+
+.actions h2 {
+    font-size:
+        clamp(32px,3.4vw,48px);
+}
+
+.action-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 17px;
+
+    margin-top: 25px;
+}
+
+.action-card {
+    position: relative;
+
+    min-height: 185px;
+
+    padding:
+        27px 29px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.93);
+
+    border:
+        1px solid
+        rgba(30,35,28,.07);
+
+    box-shadow:
+        0 12px 35px
+        rgba(30,34,28,.08);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.action-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 20px 40px
+        rgba(30,34,28,.13);
+}
+
+.card-icon {
+    width: 39px;
+    height: 39px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 7px;
+
+    color: var(--brown);
+
+    background:
+        rgba(139,73,51,.10);
+
+    font-size: 18px;
+}
+
+.card-body {
+    margin-top: 18px;
+
+    padding-right: 20px;
+}
+
+.card-body h3 {
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(20px,1.7vw,25px);
+
+    font-weight: 400;
+}
+
+.card-body p {
+    margin-top: 7px;
+
+    color: #6b7068;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+.arrow {
+    position: absolute;
+
+    right: 24px;
+    bottom: 22px;
+
+    color: var(--brown);
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   MARKET
+   ========================================================= */
+
+.market-preview {
+    margin-top: 105px;
+}
+
+.section-heading h2 {
+    margin-top: 8px;
+
+    font-size:
+        clamp(35px,4vw,50px);
+}
+
+.market-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 17px;
+
+    margin-top: 25px;
+}
+
+.market-card {
+    min-height: 205px;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 12px 35px
+        rgba(30,34,28,.07);
+}
+
+.market-card-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.crop-icon,
+.listing-icon {
+    display: grid;
+
+    place-items: center;
+
+    background:
+        rgba(139,73,51,.10);
+
+    color: var(--brown);
+
+    font-family: Georgia, serif;
+}
+
+.crop-icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 7px;
+}
+
+.change {
+    padding:
+        5px 8px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(80,110,72,.08);
+
+    color: #53634d;
+
+    font-size: 7px;
+}
+
+.crop-type {
+    margin-top: 17px;
+
+    font-size: 7px;
+
+    letter-spacing: 1.3px;
+
+    color: #777c74;
+}
+
+.market-card h3 {
+    margin-top: 5px;
+
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    font-weight: 400;
+}
+
+.market-location {
+    margin-top: 4px;
+
+    font-size: 8px;
+
+    color: #70756d;
+}
+
+.market-price {
+    margin-top: 22px;
+
+    font-family: Georgia, serif;
+
+    font-size: 24px;
+}
+
+.market-price small {
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    color: #767b73;
+}
+
+
+/* =========================================================
+   LISTINGS
+   ========================================================= */
+
+.listings-section {
+    margin-top: 105px;
+}
+
+.listing-box {
+    margin-top: 25px;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    box-shadow:
+        0 12px 35px
+        rgba(30,34,28,.07);
+}
+
+.listing-row {
+    min-height: 110px;
+
+    padding:
+        20px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-bottom:
+        1px solid
+        rgba(30,34,28,.08);
+}
+
+.listing-row:last-child {
+    border-bottom: none;
+}
+
+.listing-crop {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.listing-icon {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+}
+
+.listing-crop h3 {
+    font-family: Georgia, serif;
+
+    font-size: 21px;
+
+    font-weight: 400;
+}
+
+.listing-crop p {
+    margin-top: 5px;
+
+    font-size: 8px;
+
+    color: #5f655d;
+}
+
+.listing-crop small {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 7px;
+
+    color: #858a82;
+}
+
+.listing-status {
+    padding:
+        7px 12px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(80,110,72,.08);
+
+    color: #5b6857;
+
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   OPPORTUNITY
+   ========================================================= */
+
+.opportunity-section {
+    min-height: 245px;
+
+    margin-top: 105px;
+
+    padding: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(247,242,231,.90);
+
+    border:
+        1px solid
+        rgba(100,80,60,.08);
+
+    box-shadow:
+        0 12px 35px
+        rgba(30,34,28,.05);
+}
+
+.opportunity-content {
+    max-width: 730px;
+}
+
+.opportunity-content h2 {
+    margin-top: 9px;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(31px,3.3vw,46px);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+}
+
+.opportunity-content > p:not(.section-label) {
+    margin-top: 12px;
+
+    color: #696e66;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+.brown-button {
+    display: inline-flex;
+
+    margin-top: 19px;
+
+    padding:
+        11px 17px;
+
+    border-radius: 5px;
+
+    background:
+        var(--brown);
+
+    color: white;
+
+    font-size: 8px;
+
+    font-weight: 700;
+}
+
+.opportunity-symbol {
+    width: 150px;
+    height: 150px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.78);
+}
+
+.opportunity-symbol span {
+    color: var(--brown);
+
+    font-size: 20px;
+}
+
+.opportunity-symbol strong {
+    margin-top: 3px;
+
+    font-size: 28px;
+
+    font-weight: 300;
+}
+
+.opportunity-symbol small {
+    margin-top: 4px;
+
+    font-size: 7px;
+
+    color: #777b73;
+}
+
+
+/* =========================================================
+   SUPPORT
+   ========================================================= */
+
+.support-section {
+    min-height: 150px;
+
+    margin-top: 30px;
+
+    padding:
+        28px 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.90);
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 12px 35px
+        rgba(30,34,28,.06);
+}
+
+.support-section h2 {
+    margin-top: 8px;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(30px,3vw,42px);
+
+    font-weight: 400;
+}
+
+.support-section > div > p:last-child {
+    margin-top: 7px;
+
+    color: #71766e;
+
+    font-size: 8px;
+}
+
+.support-button {
+    flex-shrink: 0;
+
+    padding:
+        12px 18px;
+
+    border:
+        1px solid
+        rgba(50,55,47,.20);
+
+    border-radius: 7px;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .main-nav {
+        gap: 15px;
+    }
+
+    .main-nav a {
+        font-size: 9px;
+    }
+
+    .hero {
+        margin-top: 100px;
+    }
+
+    .region-panel {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .region-controls {
+        width: 100%;
+    }
+
+    .action-grid,
+    .market-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .action-card:last-child,
+    .market-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .dashboard {
+        padding:
+            0 12px 45px;
+    }
+
+
+    /* HEADER */
+
+    .site-header {
+        min-height: 75px;
+    }
+
+    .brand {
+        gap: 9px;
+    }
+
+    .brand-mark {
+        width: 37px;
+        height: 37px;
+    }
+
+    .brand-text strong {
+        font-size: 19px;
+    }
+
+    .brand-text small {
+        display: none;
+    }
+
+
+    /* HAMBURGER */
+
+    .menu-button {
+        display: flex;
+    }
+
+
+    /* MOBILE DROPDOWN */
+
+    .main-nav {
+        display: none;
+
+        position: absolute;
+
+        top: 68px;
+
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        margin: 0;
+
+        padding: 9px;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 2px;
+
+        border-radius: 12px;
+
+        background:
+            rgba(255,255,255,.98);
+
+        box-shadow:
+            0 15px 35px
+            rgba(30,34,28,.15);
+
+        backdrop-filter: blur(12px);
+
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+
+    .main-nav a {
+        width: 100%;
+
+        min-height: 45px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding:
+            10px 15px;
+
+        border-radius: 7px;
+
+        font-size: 11px;
+    }
+
+    .main-nav a.active::after {
+        left: 7px;
+
+        bottom: 10px;
+
+        width: 3px;
+
+        height: 22px;
+
+        transform: none;
+    }
+
+
+    /* HEADER ACTIONS */
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .notification-button,
+    .profile-button {
+        width: 36px;
+        height: 36px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        margin-top: 75px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(46px,14vw,64px);
+
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        max-width: 340px;
+
+        font-size: 12px;
+    }
+
+
+    /* REGION */
+
+    .region-panel {
+        margin-top: 32px;
+
+        padding: 18px;
+
+        border-radius: 13px;
+    }
+
+    .region-info strong {
+        font-size: 17px;
+
+        white-space: normal;
+    }
+
+    .region-controls {
+        grid-template-columns: 1fr;
+
+        gap: 11px;
+    }
+
+    .field select {
+        height: 46px;
+
+        font-size: 10px;
+    }
+
+
+    /* ACTIONS */
+
+    .actions {
+        margin-top: 65px;
+    }
+
+    .actions h2 {
+        font-size: 31px;
+    }
+
+    .action-grid,
+    .market-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .action-card,
+    .market-card {
+        min-height: 160px;
+
+        grid-column: auto;
+    }
+
+
+    /* SECTIONS */
+
+    .market-preview,
+    .listings-section {
+        margin-top: 70px;
+    }
+
+    .section-heading h2 {
+        font-size: 35px;
+    }
+
+
+    /* LISTINGS */
+
+    .listing-row {
+        padding: 18px;
+
+        min-height: 100px;
+    }
+
+    .listing-crop h3 {
+        font-size: 19px;
+    }
+
+
+    /* OPPORTUNITY */
+
+    .opportunity-section {
+        margin-top: 70px;
+
+        padding:
+            27px 22px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .opportunity-symbol {
+        align-self: center;
+
+        width: 125px;
+        height: 125px;
+    }
+
+
+    /* SUPPORT */
+
+    .support-section {
+        padding:
+            25px 21px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .support-button {
+        width: 100%;
+
+        text-align: center;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .actions h2 {
+        font-size: 28px;
+    }
+
+    .region-panel {
+        padding: 15px;
+    }
+
+    .brand-text strong {
+        font-size: 17px;
+    }
+
+    .menu-button {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KrishiSetu | Farmer Dashboard</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/profile-menu.css">
+</head>
+
+<body>
+
+<main class="dashboard">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="brand">
+
+            <span class="brand-mark">
+                <img src="logo.ico" alt="KrishiSetu logo" />
+            </span>
+
+            <span class="brand-text">
+                <strong>KrishiSetu</strong>
+                <small>CONNECTING FARMERS TO OPPORTUNITY</small>
+            </span>
+
+        </a>
+
+
+        <!-- DESKTOP + MOBILE NAV -->
+
+        <nav class="main-nav" id="mainNav">
+
+            <a href="dashboard.html" class="active">
+                Dashboard
+            </a>
+
+            <a href="market-prices.html">
+                Market Prices
+            </a>
+
+            <a href="lots.html">
+                Sell Product
+            </a>
+
+            <a href="support.html">
+                Support
+            </a>
+
+        </nav>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <!-- HEADER ACTIONS -->
+
+        <div class="header-actions">
+
+            <a
+                href="notifications.html"
+                class="notification-button"
+                aria-label="Notifications"
+            >
+                <span></span>
+                ♧
+            </a>
+
+            <div class="profile-menu">
+                <a
+                    href="profile.html"
+                    class="profile-button"
+                    aria-label="Profile"
+                >
+                    F
+                </a>
+                <div class="profile-dropdown">
+                    <a href="profile.html">Profile</a>
+                    <button type="button" data-action="logout">Logout</button>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <p class="hero-label">
+            FARMER DASHBOARD
+        </p>
+
+        <h1>
+            Good day, <span>Farmer.</span>
+        </h1>
+
+        <p class="hero-description">
+            Here's what's happening with your farm,
+            market opportunities and produce today.
+        </p>
+
+    </section>
+
+
+    <!-- ================= REGION ================= -->
+
+    <section class="region-panel">
+
+        <div class="region-info">
+
+            <div class="location-icon">
+                ●
+            </div>
+
+            <div>
+
+                <span class="small-label">
+                    YOUR REGION
+                </span>
+
+                <strong id="regionDisplay">
+                    Pune, Maharashtra, India
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="region-controls">
+
+            <div class="field">
+
+                <label for="stateSelect">
+                    State
+                </label>
+
+                <div class="select-box">
+
+                    <select id="stateSelect">
+
+                        <option value="">
+                            Select State
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="districtSelect">
+                    District
+                </label>
+
+                <div class="select-box">
+
+                    <select
+                        id="districtSelect"
+                        disabled
+                    >
+
+                        <option value="">
+                            Select District
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ACTIONS ================= -->
+
+    <section class="actions">
+
+        <h2>
+            What would you like to do?
+        </h2>
+
+
+        <div class="action-grid">
+
+
+            <!-- MARKET PRICES -->
+
+            <a
+                href="market-prices.html"
+                class="action-card"
+            >
+
+                <div class="card-icon">
+                    ₹
+                </div>
+
+                <div class="card-body">
+
+                    <h3>
+                        Check Market Prices
+                    </h3>
+
+                    <p>
+                        See current crop prices and
+                        compare different markets.
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- SELL PRODUCE -->
+
+            <a
+                href="lots.html"
+                class="action-card"
+            >
+
+                <div class="card-icon">
+                    +
+                </div>
+
+                <div class="card-body">
+
+                    <h3>
+                        Sell Your Produce
+                    </h3>
+
+                    <p>
+                        List your harvest and connect
+                        with potential buyers.
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- BUYERS -->
+
+            <a
+                href="buyers.html"
+                class="action-card"
+            >
+
+                <div class="card-icon">
+                    ✓
+                </div>
+
+                <div class="card-body">
+
+                    <h3>
+                        Find Buyers
+                    </h3>
+
+                    <p>
+                        Discover buyers interested
+                        in agricultural produce.
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TODAY'S MARKET ================= -->
+
+    <section class="market-preview">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                MARKET OVERVIEW
+            </p>
+
+            <h2>
+                Today's market
+            </h2>
+
+        </div>
+
+
+        <div class="market-grid">
+
+
+            <article class="market-card">
+
+                <div class="market-card-top">
+
+                    <div class="crop-icon">
+                        W
+                    </div>
+
+                    <span class="change positive">
+                        ↑ 4.2%
+                    </span>
+
+                </div>
+
+                <p class="crop-type">
+                    CEREAL
+                </p>
+
+                <h3>
+                    Wheat
+                </h3>
+
+                <p class="market-location">
+                    Maharashtra
+                </p>
+
+                <div class="market-price">
+                    ₹2,450
+                    <small>/ quintal</small>
+                </div>
+
+            </article>
+
+
+            <article class="market-card">
+
+                <div class="market-card-top">
+
+                    <div class="crop-icon">
+                        R
+                    </div>
+
+                    <span class="change positive">
+                        ↑ 2.1%
+                    </span>
+
+                </div>
+
+                <p class="crop-type">
+                    CEREAL
+                </p>
+
+                <h3>
+                    Basmati Rice
+                </h3>
+
+                <p class="market-location">
+                    West Bengal
+                </p>
+
+                <div class="market-price">
+                    ₹8,700
+                    <small>/ quintal</small>
+                </div>
+
+            </article>
+
+
+            <article class="market-card">
+
+                <div class="market-card-top">
+
+                    <div class="crop-icon">
+                        O
+                    </div>
+
+                    <span class="change positive">
+                        ↑ 3.6%
+                    </span>
+
+                </div>
+
+                <p class="crop-type">
+                    VEGETABLE
+                </p>
+
+                <h3>
+                    Red Onion
+                </h3>
+
+                <p class="market-location">
+                    Maharashtra
+                </p>
+
+                <div class="market-price">
+                    ₹2,180
+                    <small>/ quintal</small>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CURRENT LISTINGS ================= -->
+
+    <section class="listings-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                YOUR PRODUCE
+            </p>
+
+            <h2>
+                My current listings
+            </h2>
+
+        </div>
+
+
+        <div class="listing-box">
+
+
+            <div class="listing-row">
+
+                <div class="listing-crop">
+
+                    <span class="listing-icon">
+                        W
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Wheat
+                        </h3>
+
+                        <p>
+                            25 quintals available
+                        </p>
+
+                        <small>
+                            Listed 2 days ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <span class="listing-status">
+                    Active
+                </span>
+
+            </div>
+
+
+            <div class="listing-row">
+
+                <div class="listing-crop">
+
+                    <span class="listing-icon">
+                        O
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Red Onion
+                        </h3>
+
+                        <p>
+                            12 quintals available
+                        </p>
+
+                        <small>
+                            Listed 5 days ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <span class="listing-status">
+                    Active
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MARKET OPPORTUNITY ================= -->
+
+    <section class="opportunity-section">
+
+        <div class="opportunity-content">
+
+            <p class="section-label">
+                MARKET OPPORTUNITY
+            </p>
+
+            <h2>
+                There may be a better market
+                for your produce.
+            </h2>
+
+            <p>
+                Compare nearby markets before selling.
+                A small difference in price can make a
+                meaningful difference to your earnings.
+            </p>
+
+            <a
+                href="market-prices.html"
+                class="brown-button"
+            >
+                Compare Markets →
+            </a>
+
+        </div>
+
+
+        <div class="opportunity-symbol">
+
+            <span>₹</span>
+
+            <strong>+</strong>
+
+            <small>
+                Potential opportunity
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SUPPORT ================= -->
+
+    <section class="support-section">
+
+        <div>
+
+            <p class="section-label">
+                NEED HELP?
+            </p>
+
+            <h2>
+                We're here to help.
+            </h2>
+
+            <p>
+                Have a question about selling your produce,
+                market prices or using KrishiSetu?
+            </p>
+
+        </div>
+
+
+        <a
+            href="support.html"
+            class="support-button"
+        >
+            Contact Support →
+        </a>
+
+    </section>
+
+</main>
+
+
+<script src="js/dashboard.js"></script>
+<script src="js/profile-menu.js"></script>
+
+</body>
+</html>

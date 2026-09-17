@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | KrishiSetu</title>
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <header class="auth-header">
+
+        <a href="index.html" class="brand">
+
+            <span class="brand-mark">
+                <img src="logo.ico" alt="KrishiSetu logo" />
+            </span>
+
+            <span class="brand-text">
+                <strong>KrishiSetu</strong>
+                <small>Connecting Farmers to Opportunity</small>
+            </span>
+
+        </a>
+
+        <a href="index.html" class="back-link">
+            ← Back to Home
+        </a>
+
+    </header>
+
+
+    <main class="auth-main">
+
+        <section class="auth-card">
+
+            <div class="auth-heading">
+
+                <p class="section-label">
+                    WELCOME BACK
+                </p>
+
+                <h1>
+                    Login to
+                    <span>KrishiSetu.</span>
+                </h1>
+
+                <p>
+                    Access market prices, manage your produce
+                    and connect with buyers.
+                </p>
+
+            </div>
+
+
+            <form id="loginForm" novalidate>
+
+                <!-- MOBILE -->
+
+                <div class="form-group">
+
+                    <label for="mobile">
+                        Mobile Number
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="country-code">
+                            +91
+                        </span>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            inputmode="numeric"
+                            maxlength="10"
+                            autocomplete="tel"
+                            placeholder="Enter 10-digit mobile number"
+                        >
+
+                    </div>
+
+                    <small
+                        class="field-error"
+                        id="mobileError"
+                    ></small>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <div class="label-row">
+
+                        <label for="password">
+                            OTP
+                        </label>
+
+                        <a href="#" id="forgotPassword">
+                            Get OTP
+                        </a>
+
+                    </div>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="text"
+                            id="password"
+                            name="password"
+                            autocomplete="one-time-code"
+                            placeholder="Enter your OTP"
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <small
+                        class="field-error"
+                        id="passwordError"
+                    ></small>
+
+                </div>
+
+
+                <!-- ACCOUNT TYPE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Login as
+                    </label>
+
+                    <div class="role-options">
+
+                        <label class="role-option">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="farmer"
+                                checked
+                            >
+
+                            <span class="role-option-content">
+                                <span class="role-icon">🌾</span>
+
+                                <span>
+                                    <strong>Farmer</strong>
+                                    <small>Sell & manage produce</small>
+                                </span>
+                            </span>
+
+                        </label>
+
+
+                        <label class="role-option">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="buyer"
+                            >
+
+                            <span class="role-option-content">
+                                <span class="role-icon">🛒</span>
+
+                                <span>
+                                    <strong>Buyer</strong>
+                                    <small>Find & buy produce</small>
+                                </span>
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                    <small
+                        class="field-error"
+                        id="roleError"
+                    ></small>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    Login
+                    <span>→</span>
+                </button>
+
+
+                <p
+                    class="form-message"
+                    id="formMessage"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+
+            <div class="auth-divider">
+                <span>New to KrishiSetu?</span>
+            </div>
+
+
+            <a
+                href="signup.html"
+                class="signup-button"
+            >
+                Create an Account
+            </a>
+
+
+            <p class="terms-text">
+                By continuing, you agree to use KrishiSetu
+                responsibly and provide accurate account information.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer class="auth-footer">
+
+        <span>
+            © 2026 KrishiSetu
+        </span>
+
+        <span>
+            Built for India's agricultural community.
+        </span>
+
+    </footer>
+
+
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>
