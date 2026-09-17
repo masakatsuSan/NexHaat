@@ -6,6 +6,7 @@ const farmerLotSchema = new mongoose.Schema({
   farmer_id: { type: String, required: true, index: true },
   commodity: { type: String, required: true },
   variety: { type: String, required: true },
+  location: { type: String, required: true },
   quantity_quintals: { type: Number, required: true },
   quality_grade: { type: String, enum: ["Grade-A", "Grade-B", "Grade-C"], required: true },
   harvest_date: { type: Date, default: null },

@@ -1,11 +1,13 @@
 import { Router } from "express";
 import auth from "../middleware/auth.js";
 import roleCheck from "../middleware/roleCheck.js";
-import { browseRequirements, closeRequirement, createRequirement, getMyRequirements, updateRequirement } from "../controllers/buyerRequirementController.js";
+import { browseRequirements, closeRequirement, createRequirement, getMatchingLots, getMyRequirements, updateRequirement } from "../controllers/buyerRequirementController.js";
 const router = Router();
 router.get("/", auth, roleCheck("FARMER", "BUYER"), browseRequirements);
 router.post("/", auth, roleCheck("BUYER"), createRequirement);
 router.get("/mine", auth, roleCheck("BUYER"), getMyRequirements);
+router.get("/:id/matches", auth, roleCheck("BUYER"), getMatchingLots);
+router.get("/:id/matches", auth, roleCheck("BUYER"), getMatchingLots);
 router.patch("/:id", auth, roleCheck("BUYER"), updateRequirement);
 router.delete("/:id", auth, roleCheck("BUYER"), closeRequirement);
 export default router;

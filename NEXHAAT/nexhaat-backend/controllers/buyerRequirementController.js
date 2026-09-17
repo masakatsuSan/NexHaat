@@ -1,5 +1,6 @@
 import BuyerRequirement from "../models/BuyerRequirement.js";
 import User from "../models/User.js";
+import { findMatchingLotsForRequirement } from "../services/farmerBuyerMatching.js";
 import { v4 as uuidv4 } from "uuid";
 
 const grades = new Set(["Grade-A", "Grade-B", "Grade-C"]);
@@ -27,6 +28,20 @@ export const browseRequirements = async (_req, res) => {
     return format({ ...r, buyer_name: buyer?.name || "Unknown", buyer_district: buyer?.district || "", buyer_state: buyer?.state || "" });
   });
   res.json({ success: true, requirements: mapped });
+};
+
+export const getMatchingLots = async (req, res) => {
+  try {
+    const requirement = await BuyerRequirement.findOne({ _id: req.params.id, buyer_id: req.user.id }).lean();
+    if (!requirement) return res.status(404).json({ message: "Buyer requirement not found." });
+    if (requirement.status !== "OPEN") return res.status(409).json({ message: "Buyer requirement is closed." });
+
+    const result = await findMatchingLotsForRequirement(req.params.id);
+    res.json({ success: true, ...result });
+  } catch (error) {
+    console.error("Farmer-buyer matching error:", error);
+    res.status(500).json({ message: "Unable to find matching farmer lots." });
+  }
 };
 
 export const getMyRequirements = async (req, res) => {

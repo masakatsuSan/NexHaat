@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.js";
 import farmerRoutes from "./routes/farmer.js";
 import recommendationRoutes from "./routes/recommendations.js";
 import marketRoutes from "./routes/market.js";
+import pricePredictionRoutes from "./routes/pricePrediction.js";
 import buyerRequirementRoutes from "./routes/buyerRequirements.js";
 
 dotenv.config();
@@ -19,6 +20,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/farmer", farmerRoutes);
 app.use("/api/recommend", recommendationRoutes);
 app.use("/api/market", marketRoutes);
+app.use("/api/market", pricePredictionRoutes);
 app.use("/api/buyer-requirements", buyerRequirementRoutes);
 
 const PORT = process.env.PORT || 5000;
