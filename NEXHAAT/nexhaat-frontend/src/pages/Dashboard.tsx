@@ -218,6 +218,11 @@ export function Dashboard() {
             Find Best Mandi
           </Button>
         </Link>
+        <Link to="/price-prediction">
+          <Button variant="secondary" className="gap-2">
+            Check Price Trend
+          </Button>
+        </Link>
       </div>
     </div>
   );

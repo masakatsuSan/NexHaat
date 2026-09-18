@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { marketApi } from '@/api';
 import { cropSchema } from '@/utils/validators';
-import { Button, Input, Select } from '@/components/ui';
+import { Button, Input } from '@/components/ui';
 import { Badge } from '@/components/ui';
-import { formatCurrency, formatNumber } from '@/utils/formatters';
+import { formatCurrency } from '@/utils/formatters';
 import { CROPS } from '@/utils/constants';
 import { TrendingUp, TrendingDown, Minus, AlertCircle, Search, BarChart3 } from 'lucide-react';
 import toast from 'react-hot-toast';

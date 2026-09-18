@@ -14,6 +14,11 @@ const features = [
     description: 'List your harvest with crop, quantity, quality grade, and location. Track all your active listings in one place.',
   },
   {
+    icon: Shield,
+    title: 'Price Trend Analysis',
+    description: 'Analyze historical price data to know whether to sell now or wait for better prices. Rolling-average trend detection.',
+  },
+  {
     icon: MapPin,
     title: 'Compare Mandi Prices',
     description: 'Real-time mandi prices from Agmarknet (data.gov.in) with cached fallback. Filter by crop, state, and district.',
